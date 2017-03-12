@@ -1,0 +1,17 @@
+{
+  "name": "rc-send-restserver",
+  "description": "Rest interface for rc-send",
+  "version": "0.0.1",
+  "private": true,
+  "main": "express.js",
+  "scripts": {
+    "start": "node express.js"
+  },
+  "dependencies": {
+    "express": "4.x",
+    "body-parser": "1.x",
+    "method-override": "2.x",
+    "express-validator": "3.x",
+    "sleep": "5.1.x"
+  }
+}

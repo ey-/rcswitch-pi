@@ -3,7 +3,7 @@ CXXFLAGS=-DRPI
 
 all: send
 
-send: RCSwitch.o send.o
+send: ../rc-switch/RCSwitch.o send.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 
 clean:
