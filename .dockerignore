@@ -1,0 +1,8 @@
+Dockerfile
+.gitignore
+.git/
+README.md
+rc-switch/examples/
+.travis.yml
+old_rc/
+new_rc/

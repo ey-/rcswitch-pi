@@ -1,12 +1,9 @@
-all: send sendTriState sendRev
+# Defines the RPI variable which is needed by rc-switch/RCSwitch.h
+CXXFLAGS=-DRPI
+
+all: send
 
 send: RCSwitch.o send.o
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
-
-sendTriState: RCSwitch.o sendTriState.o
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
-
-sendRev: RCSwitch.o sendRev.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 
 clean:
