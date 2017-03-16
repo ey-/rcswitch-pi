@@ -1,0 +1,21 @@
+{
+  "bridge": {
+    "name": "YourBridgeName",
+    "username": "AA:BB:CC:DD:EE:FF",
+    "port": 1234,
+    "pin": "123-45-678"
+  },
+
+  "description": "Describe your bridge",
+
+  "accessories": [
+    {
+      "accessory": "eyRcSwitch",
+      "name": "Name your switch",
+      "host" : "http://switch",
+      "port" : "9876",
+      "systemCode": "SystemCodeForYourSwitch(1-4)",
+      "id": "UnitOfYourSwitch(1.4)"
+    }
+  ]
+}
