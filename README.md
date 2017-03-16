@@ -28,7 +28,7 @@
  ```
  
 
-The switch container contains the implementation to control Conrad RSL366 switches via REST Interface.
+The switch container contains the implementation to control Conrad RSL366 switches via REST Interface. Check wiringpi|http://wiringpi.com/ for wiring up your raspberry pi to use this. Change environment variable for PIN if you use not PIN 3.
 
 The homebridge container contains additional plugin and homebridge built to communicate primarly with the switch container.
  
