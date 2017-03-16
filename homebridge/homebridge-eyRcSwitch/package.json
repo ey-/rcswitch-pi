@@ -1,0 +1,16 @@
+{
+  "name": "homebridge-eyRcSwitch",
+  "version": "0.0.1",
+  "description": "nd",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "dependencies": {
+    "request": "2.x"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "private": true
+}

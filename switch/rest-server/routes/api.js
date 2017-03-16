@@ -16,8 +16,10 @@ exports.changeState = function (req, res) {
   req.checkBody('systemCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
   req.checkBody('unitCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
 
+  console.log('gotRequest');
   req.getValidationResult().then(function(result) {
     if (!result.isEmpty()) {
+      console.log('Error:' + util.inspect(result.array()));
       res.status(400).send('There have been validation errors: ' + util.inspect(result.array()));
       return;
     }

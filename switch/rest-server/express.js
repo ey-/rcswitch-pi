@@ -36,7 +36,7 @@ app.use(expressValidator({
 // };
 
 // app.use(allowCrossDomain);
-app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(methodOverride());
 app.put('/api/device/:command', api.changeState);
 app.put('/api/device', api.getDeviceState);
