@@ -32,4 +32,4 @@ The switch container contains the implementation to control Conrad RSL366 switch
 
 The homebridge container contains additional plugin and homebridge built to communicate primarly with the switch container.
  
- Host needs to have avahi-daemon installed and running.
+ Host needs to have avahi-daemon installed and running (with reflector enabled).
