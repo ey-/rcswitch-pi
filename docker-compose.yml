@@ -8,12 +8,6 @@ volumes:
       type: none
       device: ${PWD}/homebridge/config
       o: bind
-  dbus:
-    driver: local
-    driver_opts:
-      type: none
-      device: /var/run/dbus
-      o: bind
 
 services:
 
@@ -39,4 +33,3 @@ services:
       - rcswitch.pi.user=non-root non-privileged homebridge
     volumes:
       - homebridge_config:/home/homebridge/.homebridge
-      - dbus:/var/run/dbus
