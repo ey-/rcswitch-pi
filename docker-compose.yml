@@ -14,8 +14,7 @@ services:
   switch:
     hostname: switch
     privileged: true
-    build:
-      context: ./switch/
+    image: eyilmaz/rcswitch-pi-switch
     labels:
       - rcswitch.pi.stack=switch
       - rcswitch.pi.user=root privileged
@@ -24,8 +23,7 @@ services:
 
   homebridge:
     hostname: homebridge
-    build:
-      context: ./homebridge/
+    image: eyilmaz/rcswitch-pi-homebridge
     ports:
       - ${IP_ADDR}:51826:51826
     labels:
