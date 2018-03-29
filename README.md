@@ -1,4 +1,7 @@
 ## Docker compose based stack for switching Conrad RSL366 via Apple Home
+
+[![Build Status](https://travis-ci.org/ey-/rcswitch-pi.svg?branch=develop)](https://travis-ci.org/ey-/rcswitch-pi)
+
  This project contains a stack to use with a Raspberry Pi.
  Use docker-compose to spin up containers switch & homebridge.
  Homebridge needs a proper config.json in config folder.
