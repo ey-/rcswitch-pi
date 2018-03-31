@@ -2,7 +2,7 @@
 
 sudo sed -i "s/rlimit-nproc=3/#rlimit-nproc=3/" /etc/avahi/avahi-daemon.conf
 #sudo mkdir -p /var/run/dbus/
-#sudo dbus-daemon --system
+sudo /etc/init.d/dbus start
 
 sudo avahi-daemon -D
 
