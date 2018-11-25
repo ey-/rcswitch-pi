@@ -1,33 +1,16 @@
 
 version: "2.1"
 
-volumes:
-  homebridge_config:
-    driver: local
-    driver_opts:
-      type: none
-      device: ${PWD}/homebridge/config
-      o: bind
-
 services:
 
   switch:
     hostname: switch
     privileged: true
     image: eyilmaz/rcswitch-pi-switch
+    ports:
+      - ${IP_ADDR}:9876:9876
     labels:
       - rcswitch.pi.stack=switch
       - rcswitch.pi.user=root privileged
     environment:
       - RC_SWITCH_OUTPUT_PIN=3
-
-  homebridge:
-    hostname: homebridge
-    image: eyilmaz/rcswitch-pi-homebridge
-    ports:
-      - ${IP_ADDR}:51826:51826
-    labels:
-      - rcswitch.pi.stack=homebridge
-      - rcswitch.pi.user=non-root non-privileged homebridge
-    volumes:
-      - homebridge_config:/home/homebridge/.homebridge

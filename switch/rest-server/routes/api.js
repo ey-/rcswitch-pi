@@ -11,10 +11,10 @@ var deviceStates = [];
 
 // PUT (idempotent changes)
 exports.changeState = function (req, res) {
-  req.checkParams('command', 'Invalid command').notEmpty().isInt().lessThanOrEqual(1);
+  req.checkBody('command', 'Invalid command').notEmpty().isInt().lessThanOrEqual(1);
   // Check body for systemCode and unitCode.
-  req.checkBody('systemCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
-  req.checkBody('unitCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
+  req.checkParams('systemCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
+  req.checkParams('unitCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
 
   console.log('gotRequest');
   req.getValidationResult().then(function(result) {
@@ -23,8 +23,8 @@ exports.changeState = function (req, res) {
       res.status(400).send('There have been validation errors: ' + util.inspect(result.array()));
       return;
     }
-    executeRcSend(req.body.systemCode, req.body.unitCode, req.params.command);
-    registerDeviceState(req.body.systemCode, req.body.unitCode, req.params.command);
+    executeRcSend(req.params.systemCode, req.params.unitCode, req.body.command);
+    registerDeviceState(req.params.systemCode, req.params.unitCode, req.body.command);
     res.json({ message: 'Ok.' });
     return;
   });
@@ -32,15 +32,15 @@ exports.changeState = function (req, res) {
 
 exports.getDeviceState = function (req, res) {
   // Check body for systemCode and unitCode.
-  req.checkBody('systemCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
-  req.checkBody('unitCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
+  req.checkParams('systemCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
+  req.checkParams('unitCode', 'Invalid systemCode').notEmpty().isInt().lessThanOrEqual(4);
 
   req.getValidationResult().then(function(result) {
     if (!result.isEmpty()) {
       res.status(400).send('There have been validation errors: ' + util.inspect(result.array()));
       return;
     }
-    res.json({ message: returndeviceState(req.body.systemCode, req.body.unitCode) });
+    res.json({ message: returndeviceState(req.params.systemCode, req.params.unitCode) });
     return;
   });
 };

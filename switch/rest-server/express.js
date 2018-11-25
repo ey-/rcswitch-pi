@@ -17,29 +17,10 @@ app.use(expressValidator({
   }
 }));
 
-// Configuration
-// ## CORS middleware
-//
-// see: http://stackoverflow.com/questions/7067966/how-to-allow-cors-in-express-nodejs
-// var allowCrossDomain = function(req, res, next) {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
-//
-//     // intercept OPTIONS method
-//     if ('OPTIONS' == req.method) {
-//       res.send(200);
-//     }
-//     else {
-//       next();
-//     }
-// };
-
-// app.use(allowCrossDomain);
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.put('/api/device/:command', api.changeState);
-app.put('/api/device', api.getDeviceState);
+app.put('/api/device/:systemCode/:unitCode', api.changeState);
+app.get('/api/device/:systemCode/:unitCode', api.getDeviceState);
 
 exports = module.exports = server;
 
