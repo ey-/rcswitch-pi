@@ -6,17 +6,11 @@ script:
 # prepare qemu
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build images
-# - docker build -t eyilmaz/rcswitch-pi-homebridge ./homebridge
+# docker build -t eyilmaz/rcswitch-pi-homebridge ./homebridge
 - docker build -t eyilmaz/rcswitch-pi-switch ./switch
 # push image
 - >
   if [ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-    TAG=$(grep "ENV MYSQL_VERSION" Dockerfile | awk 'NF>1{print $NF}')
-#    docker tag eyilmaz/rcswitch-pi-homebridge eyilmaz/rcswitch-pi-homebridge:$TAG
-#    docker push eyilmaz/rcswitch-pi-homebridge:$TAG
-#    docker push eyilmaz/rcswitch-pi-homebridge
-    docker tag eyilmaz/rcswitch-pi-switch eyilmaz/rcswitch-pi-switch:$TAG
-    docker push eyilmaz/rcswitch-pi-switch:$TAG
     docker push eyilmaz/rcswitch-pi-switch
   fi
